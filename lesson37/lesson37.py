@@ -10,10 +10,10 @@ def string_zipper(zipped):
             totalCount+=1
         else:
             totalCount+=1
-            prevChar = zipped[totalCount]
+            prevChar = zipped[totalCount-1]
             returner += str(counter)
             counter = 1
             returner += char
     returner+=str(counter)
     return returner
-print(string_zipper("aaabbbbcccccdd"))
+print(string_zipper("aaabbbbcccccddeffe"))
