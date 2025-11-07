@@ -8,26 +8,31 @@ def next(prev):
 iDefinitelyDidntChatGPTThis = {1:1}
 
 def chain_length_finder(argNum):
-    if argNum in iDefinitelyDidntChatGPTThis:
-        return iDefinitelyDidntChatGPTThis[argNum]
-    else:
-        counter = 0
-        originalSoICouldIndexItAndItWontBeAtOne = argNum
-        while (argNum!=1):
-            argNum=next(argNum)
-            counter+=1
-        iDefinitelyDidntChatGPTThis[originalSoICouldIndexItAndItWontBeAtOne] = counter 
-    return counter
-
-#oh sweet pale king have mercy
-
+    original = argNum
+    steps = 0
+    while argNum not in iDefinitelyDidntChatGPTThis:
+        argNum = next(argNum)
+        steps +=1
+    length = steps + iDefinitelyDidntChatGPTThis[argNum]
+    iDefinitelyDidntChatGPTThis[original] = length
+    return length
+    # if argNum in iDefinitelyDidntChatGPTThis:
+    #     return iDefinitelyDidntChatGPTThis[argNum]
+    # else:
+    #     counter = 0
+    #     eee = argNum
+    #     while (argNum!=1):
+    #         argNum=next(argNum)
+    #         counter+=1
+    #     iDefinitelyDidntChatGPTThis[eee] = counter 
+    # return counter
+#above shit didn't work so I had to chatgpt it again
 largest = 0
 largestKey = 0
 
-for number in range (1, 1001):
+for number in range (1, 1000001):
     if chain_length_finder(number)>largest:
         largest = chain_length_finder(number)
         largestKey = number
 print (f"largest chain is {largestKey} with a length of {largest}")
 
-#Apparently you can do this faster but I honestly don't really care D: I don't wanna figure it ouuuuuuuuut
